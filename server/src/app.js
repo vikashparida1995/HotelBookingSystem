@@ -6,30 +6,10 @@ import authRoute from './routes/auth.js';
 import usersRoute from './routes/users.js';
 import roomsRoute from './routes/rooms.js';
 import hotelsRoute from './routes/hotels.js';
+import connectDB  from './config/db.js';
 const app = express();
 const PORT = process.env.PORT
 const logges = console
-
-
-const connectDB = async () => {
-    try {
-     await   mongoose.connect(process.env.MONGO_URI)
-           
-        logges.log("connect to database")
-       
-        
-    } catch (error) {
-       throw error
-    }
-}
-
-mongoose.connection.on('disconnected',()=>{
-    logges.log("mongoDB is disconnect")
-})
-
-mongoose.connection.on('connected', ()=>{
-   logges.log(" mongodb is connected ")
-})
 
 app.get('/', (req,res)=>{
     res.send('This is home pahe of hotel booking application !!!')
@@ -42,6 +22,6 @@ app.use('/api/v1/room', roomsRoute)
 
 app.listen(PORT,async (error)=>{
  if(error) console.log(error);
-  await connectDB() 
+  await connectDB(process.env.MONGO_URI) 
   console.log(`Server is running on http://localhost:${PORT}/`)
 })
