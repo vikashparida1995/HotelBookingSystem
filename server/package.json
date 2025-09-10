@@ -1,5 +1,5 @@
 {
-  "name": "Hotel booking application",
+  "name": "hotel-booking-application",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
