@@ -1,5 +1,5 @@
 import express from 'express';
-import { createHotel , updateHotels ,deleteHotels,AllHotels,HotelById} from '../controllers/hotel.controller.js';
+import { createHotel , updateHotels ,deleteHotel ,AllHotels,HotelById} from '../controllers/hotel.controller.js';
 
 const routes = express.Router();
 
@@ -11,7 +11,7 @@ routes.post('/' , createHotel);
 
 routes.put('/:id' , updateHotels);
 
-routes.delete('/:id' , deleteHotels);
+routes.delete('/:id' , deleteHotel);
 
 
 

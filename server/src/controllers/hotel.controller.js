@@ -24,7 +24,7 @@ export const updateHotels = async (req,res,next)=>{
 }
 
 
-export const deleteHotels = async (req,res,next)=>{
+export const deleteHotel = async (req,res,next)=>{
     const hotels = hotel.findById(req.params.id);
     if(!hotels) return res.send('hotel is not found !')
     try { 
@@ -39,10 +39,7 @@ export const deleteHotels = async (req,res,next)=>{
 
 
 export const AllHotels = async (req,res,next)=>{
-     const failed = false;
-
-        if(failed) return next(createError(401,"you are not authenticated !"))
-    
+   
         try {
            const Hotels = await hotel.find(req.params.id)
           return  res.status(200).json(Hotels)
