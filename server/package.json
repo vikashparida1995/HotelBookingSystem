@@ -4,13 +4,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start" : "nodemon src/app.js"
+    "start": "nodemon src/app.js"
   },
   "author": "vikash parida",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.2",
     "eslint": "^9.35.0",
     "express": "^4.21.2",

@@ -1,9 +1,13 @@
 import express from 'express';
+import { register ,login } from '../controllers/auth.controller.js';
 const routes = express.Router();
 
-routes.get('/' ,(req,res)=>{
-    res.send(' hii this Auth routes !!!')
-})
+
+
+routes.post('/register' , register)
+routes.post('/login' , login)
+
+
 
 
 

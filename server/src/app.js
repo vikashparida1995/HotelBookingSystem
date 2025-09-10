@@ -7,9 +7,11 @@ import usersRoute from './routes/users.js';
 import roomsRoute from './routes/rooms.js';
 import hotelsRoute from './routes/hotels.js';
 import connectDB  from './config/db.js';
+import cookieParser from 'cookie-parser'
 const app = express();
 const PORT = process.env.PORT
 const logges = console
+app.use(cookieParser())
 app.use(express.json())
 
 app.get('/', (req,res)=>{

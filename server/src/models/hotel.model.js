@@ -49,10 +49,6 @@ const hotelSchema = new Schema({
     featured :{
         type : Boolean,
         default : false
-    },
-    delete: {
-        type: Boolean,
-        default : false
     }
 })
 
