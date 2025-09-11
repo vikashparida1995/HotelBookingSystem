@@ -124,3 +124,15 @@ export const searchHotelsByLocation = async (req, res, next) => {
     next(createError(500, error.message || 'Error searching hotels'));
   }
 };
+
+
+export const GetHotelByRoomId = async (req,res,next)=>{
+  try {
+    const hotel = HotelModel.findById(req.params.id);
+    const list = await Promise.all(hotel.room.map((room)=>{
+
+    })) 
+  } catch (error) {
+    next(createError(401,error));
+  }
+}
