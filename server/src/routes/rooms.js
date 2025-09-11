@@ -1,18 +1,18 @@
 import express from 'express';
-import {createRoom,updateRoom,deleteRoom,Rooms,Room} from '../controllers/room.controller.js'
+import { createRoom, updateRoom, deleteRoom, Rooms, Room } from '../controllers/room.controller.js'
 import { verifyAdmin } from '../middlewares/verifyToken.js';
 
 const routes = express.Router();
 
-routes.get('/' , Rooms);
+routes.get('/', Rooms);
 
-routes.get('/find/:id', Room);
+routes.get('/:id', Room);
 
-routes.post('/:hotelid' , verifyAdmin ,createRoom);
+routes.post('/:hotelid', verifyAdmin, createRoom);
 
-routes.put('/:id' , verifyAdmin ,updateRoom);
+routes.put('/:id', verifyAdmin, updateRoom);
 
-routes.delete('/:id' ,verifyAdmin , deleteRoom);
+routes.delete('/:id', verifyAdmin, deleteRoom);
 
 
 

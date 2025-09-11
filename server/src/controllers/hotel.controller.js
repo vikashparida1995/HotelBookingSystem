@@ -39,9 +39,11 @@ export const deleteHotel = async (req,res,next)=>{
 
 
 export const hotels = async (req,res,next)=>{
-   
+  
+  const {min,max,...other} = req.query;
+  console.log({min,max,...other})
         try {
-           const Hotels = await HotelModel.find(req.params.id)
+           const Hotels = await HotelModel.find({...other,cheapestPrice:{$gt:min || 1,$lt:max || 99999999999999}}).limit(req.query.limit)
           return  res.status(200).json(Hotels)
         } catch (error) {
             next(error) 
@@ -71,14 +73,54 @@ export const CountByCity = async (req,res,next)=>{
 }
 
 export const CountByType = async (req,res,next)=>{
-  const typeNmame = req.query.type.split(',')
+    const countHotel = await HotelModel.countDocuments({type:"hotel"});
+    const countClub = await HotelModel.countDocuments({type:"club"});
+    const countBar = await HotelModel.countDocuments({type:"bar"});
+    const countApartment = await HotelModel.countDocuments({type:"apartment"});
+    const countVilla = await HotelModel.countDocuments({type:"villa"});
+    const countcabin = await HotelModel.countDocuments({type:"cabin"});
+
     try {
-         const list = await Promise.all(typeNmame.map((type)=>{
-           return HotelModel.countDocuments({type:type})
-         }))
-          return  res.status(200).json({count : list})
+          return  res.status(200).send([
+            {type:"Hotel" ,count : countHotel},
+            {type:"Club" ,count : countClub},
+            {type:"Bar" ,count : countBar},
+            {type:"villa" ,count : countVilla},
+            {type:"Cabin" ,count : countcabin},
+            {type:"Apartment" ,count : countApartment},
+          ])
         } catch (error) {
            next(createError(401,error)) 
         }
 }
 
+
+export const searchHotelsByLocation = async (req, res, next) => {
+  const { lat, long, maxDistance = 5000 } = req.query;  // Default to 5km (5000 meters)
+
+  if (!lat || !long) {
+    return next(createError(400, 'Latitude and longitude are required'));
+  }
+
+  try {
+    const hotels = await HotelModel.find({
+      location: {
+        $near: {
+          $geometry: {
+            type: 'Point',
+            coordinates: [parseFloat(long), parseFloat(lat)]  // [long, lat]
+          },
+          $maxDistance: parseFloat(maxDistance)  // In meters
+        }
+      }
+    }).limit(10);  // Limit results for performance; adjust as needed
+
+    if (!hotels.length) {
+      return res.status(404).json({ message: 'No hotels found near this location' });
+    }
+
+    res.status(200).json(hotels);
+  } catch (error) {
+    next(createError(500, error.message || 'Error searching hotels'));
+  }
+};
