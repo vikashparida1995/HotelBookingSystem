@@ -4,26 +4,16 @@ import  {verifyAdmin, verifyToken , verifyUser}  from '../middlewares/verifyToke
 
 const routes = express.Router();
 
-routes.get('/chackauthentcation', verifyToken , (req,res,next)=>{
-    res.send("hello user your are login in")
-} )
-
-routes.get('/checkauthrization/:id', verifyUser ,(req,res,next)=>{
-    res.send("hello user you are loggin in a and you can delete you account")
-})
-
-routes.get('/checkAdmin/:id', verifyAdmin ,(req,res,next)=>{
-    res.send("hello user you are is admin ")
-})
 
 
-routes.get('/', Allusers);
 
-routes.get('/:id', userById);
+routes.get('/', verifyAdmin ,Allusers);
 
-routes.put('/:id' ,updateusers);
+routes.get('/:id', verifyUser ,userById);
 
-routes.delete('/:id' , deleteusers);
+routes.put('/:id' ,verifyUser ,updateusers);
+
+routes.delete('/:id' , verifyAdmin ,deleteusers);
 
 
 
