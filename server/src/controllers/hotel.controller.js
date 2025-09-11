@@ -1,4 +1,5 @@
 import HotelModel from '../models/hotel.model.js'
+import roomModel from '../models/room.model.js';
 import {createError} from '../utils/error.js';
 
 export const createHotel = async (req,res,next)=>{
@@ -126,13 +127,16 @@ export const searchHotelsByLocation = async (req, res, next) => {
 };
 
 
-export const GetHotelByRoomId = async (req,res,next)=>{
+export const GetHotelRoomId = async (req,res,next)=>{
   try {
-    const hotel = HotelModel.findById(req.params.id);
-    const list = await Promise.all(hotel.room.map((room)=>{
-
+    const hotel = await HotelModel.findById(req.params.id);
+    if(!hotel) next(createError(401,"this hotel is not found"))
+    
+    const list = await Promise.all(hotel.rooms.map((room)=>{
+         return roomModel.findById(room)
     })) 
-  } catch (error) {
+    res.status(200).json(list)
+   } catch (error) {
     next(createError(401,error));
   }
 }
