@@ -69,8 +69,8 @@ Content-Type: application/json
 **Body:**
 ```json
 {
-  "email": "admin@example.com",
-  "password": "AdminPass123!"
+    "username" : "admin",
+    "password" : "AdminPass123!"
 }
 ```
 
