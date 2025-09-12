@@ -17,7 +17,7 @@ export const verifyToken = (req,res,next)=>{
 export const verifyUser = async (req,res,next)=>{
     const userId =  req.params.id ; 
     verifyToken(req,res,()=>{
-     
+        if(!req.user?.id || !req.user.isAdmin) return next(createError(401,"you are not authenticated !"))
         if(req.user.id === userId || req.user.isAdmin){
             next()
         }else{

@@ -141,25 +141,31 @@ export const GetHotelRoomId = async (req,res,next)=>{
   }
 }
 
-export const updateSpecialPrices = async (req, res ,next) => {
+export const updateSpecialPrices = async (req, res, next) => {
   const { id } = req.params;
   const body = req.body;
-  if (!Array.isArray(body)) return next(createError(400,'Array of specials expected'));
+
+  if (!Array.isArray(body)) {
+    return next(createError(400, 'Array of specials expected'));
+  }
 
   for (const sp of body) {
     if (!sp.startDate || !sp.endDate || typeof sp.price !== 'number') {
-      return next(createError(400,"Each special must have startDate,endDate,price"))
+      return next(createError(400, "Each special must have startDate,endDate,price"));
     }
   }
 
   const hotel = await HotelModel.findById(id);
-  if (!hotel) return next(createError(400,"Hotel not found"));
+  if (!hotel) return next(createError(400, "Hotel not found"));
 
+  // assign specials to hotel
   hotel.specialPrices = body.map(s => ({
     startDate: new Date(s.startDate),
     endDate: new Date(s.endDate),
     price: s.price
   }));
-  await hotel.save();
-  res.json(hotel);
+
+  const updateHotel = await hotel.save(); // ✅ save the hotel document
+  res.json(updateHotel);
 };
+

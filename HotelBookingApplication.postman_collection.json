@@ -1,0 +1,634 @@
+{
+	"info": {
+		"_postman_id": "fc7d62ec-e73c-4cf4-b9c4-f928df0e9ffd",
+		"name": "HotelBookingApplication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29271009"
+	},
+	"item": [
+		{
+			"name": "HotelApi",
+			"item": [
+				{
+					"name": "addHotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "name",
+								"value": "vikash",
+								"type": "text"
+							},
+							{
+								"key": "age",
+								"value": "25",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"The Little Door\",\r\n    \"type\":  \"Bar\",\r\n    \"city\": \"mumbai\" ,\r\n    \"address\": \"Ground Floor, Shri Siddhivinayak Plaza, Veera Desai Industrial Estate, Andheri West, Mumbai, Maharashtra 400053\",\r\n    \"location\": { \"type\": \"Point\", \"coordinates\": [72.83344014053932, 19.13938623517452] },\r\n    \"distance\" : \"3 km from Andheri\" ,\r\n    \"photo\": \"TheLittleDoor.png\",\r\n    \"desc\" : \"nice Bar\",\r\n    \"rating\" : 3,\r\n    \"defaultPrice\" : 1000,\r\n    \"specialPrices\": [{\r\n    \"startDate\": \"2025-09-10\",\r\n    \"endDate\": \"2025-09-12\",\r\n    \"price\": 150\r\n  },\r\n  {\r\n    \"startDate\": \"2025-09-15\",\r\n    \"endDate\": \"2025-09-16\",\r\n    \"price\": 200\r\n  }],\r\n    \"deleted\" : false \r\n   \r\n}\r\n\r\n// 19.13938623517452, 72.83344014053932",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/hotel",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"hotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateHotel",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Taj Hotel \",\r\n    \"type\":  \"hotel\",\r\n    \"city\": \"Mumbai\" ,\r\n    \"address\": \"Gate of India\",\r\n    \"distance\" : \"100 mtr from Gate of India\" ,\r\n    \"photo\": \"Taj.png\",\r\n    \"desc\" : \"nice Hotel\",\r\n    \"rating\" : 5,\r\n    \"cheapestPrice\" : 20000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/hotel/68c14d3b518f26ab0772dea3",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"hotel",
+								"68c14d3b518f26ab0772dea3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "showAllHotel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/hotel/?featured=false",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"hotel",
+								""
+							],
+							"query": [
+								{
+									"key": "featured",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindHotelById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/hotel/68c14d3b518f26ab0772dea3",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"hotel",
+								"68c14d3b518f26ab0772dea3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteHotel",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/hotel/68c14d3b518f26ab0772dea3",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"hotel",
+								"68c14d3b518f26ab0772dea3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findHotelByType",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/hotel/countByType",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"hotel",
+								"countByType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findHotelByCity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/hotel/countByCity?cityName=Mumbai",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"hotel",
+								"countByCity"
+							],
+							"query": [
+								{
+									"key": "cityName",
+									"value": "Mumbai"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchByLocation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/hotel/search/?lat=19.13938623517452&long=72.83344014053932&maxDistance=100",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"hotel",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "19.13938623517452"
+								},
+								{
+									"key": "long",
+									"value": "72.83344014053932"
+								},
+								{
+									"key": "maxDistance",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "specialPricesApi",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"startDate\": \"2025-09-10\",\r\n    \"endDate\": \"2025-09-12\",\r\n    \"price\": 3000\r\n  },\r\n  {\r\n    \"startDate\": \"2025-09-15\",\r\n    \"endDate\": \"2025-09-16\",\r\n    \"price\": 6000\r\n  }\r\n]\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/hotel/updateSpecialPrices/68c3dd8fabd6090905a86683",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"hotel",
+								"updateSpecialPrices",
+								"68c3dd8fabd6090905a86683"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "authApi",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"aachalparida\",\r\n    \"email\" : \"aachalparida07@gmail.com\",\r\n    \"password\" : \"root@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"aachalparida\",\r\n    \"password\" : \"root@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "userApi",
+			"item": [
+				{
+					"name": "AllUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/user/",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateuser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/user/",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/user/",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/user/68c16782faa380a956f0cbaa",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"68c16782faa380a956f0cbaa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RoomApi",
+			"item": [
+				{
+					"name": "AddRoom",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"4BHK  Room\",\r\n    \"price\": 30000,\r\n    \"maxPeorle\":10,\r\n    \"desc\": \"2 King Size Bad Room and 2 Bad Room  and 2 Bathroom and 1 Hale Room\" ,\r\n    \"roomNo\" :[{\"number\":105} ]\r\n}\r\n// ,\"unavailableDates\": [\"25.04.2025\",\"26.04.2025\"]\r\n// \"unavailableDates\": [\"05.04.2025\",\"06.04.2025\"]\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/room/68c14d3b518f26ab0772dea3",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"room",
+								"68c14d3b518f26ab0772dea3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteRoom",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hotelid\": \"68c14d3b518f26ab0772dea3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/room/68c288c49d75e12fd35048b6",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"room",
+								"68c288c49d75e12fd35048b6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rooms",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hotelid\": \"68c14d3b518f26ab0772dea3\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/room/",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"room",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "room",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/room/68c29115d093efa8fa413fdb",
+							"protocol": "http",
+							"host": [
+								"10",
+								"22",
+								"11",
+								"15"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"room",
+								"68c29115d093efa8fa413fdb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

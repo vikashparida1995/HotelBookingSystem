@@ -22,7 +22,7 @@ routes.get('/countByType', CountByType);
 
 routes.get('/room/:id', GetHotelRoomId);
 
-routes.put('/updateSpecialPrices' , verifyAdmin , updateSpecialPrices)
+routes.put('/updateSpecialPrices/:id' , verifyAdmin , updateSpecialPrices)
 
 
 export default routes;
