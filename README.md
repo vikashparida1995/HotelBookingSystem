@@ -16,7 +16,7 @@ Features include:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/<your-username>/hotel-booking-system.git
+git clone https://github.com/vikashparida1995/HotelBookingSystem.git
 cd hotel-booking-system/server
 ```
 
