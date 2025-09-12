@@ -59,7 +59,7 @@ const hotelSchema = new Schema({
     },
     defaultPrice: { 
         type: Number,
-         required: true, min: 0 
+         required: true, min: 1000,
     },
     specialPrices: [SpecialPriceSchema],
     featured: {
