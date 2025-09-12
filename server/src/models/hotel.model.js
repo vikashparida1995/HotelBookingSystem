@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
-
+const SpecialPriceSchema = new Schema({
+  startDate: { type: Date, required: true },
+  endDate: { type: Date, required: true },
+  price: { type: Number, required: true, min: 0 },
+});
 
 
 const hotelSchema = new Schema({
@@ -53,10 +57,11 @@ const hotelSchema = new Schema({
         type: [String],
 
     },
-    cheapestPrice: {
+    defaultPrice: { 
         type: Number,
-        required: true
+         required: true, min: 0 
     },
+    specialPrices: [SpecialPriceSchema],
     featured: {
         type: Boolean,
         default: false

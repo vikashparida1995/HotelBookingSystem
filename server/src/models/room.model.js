@@ -6,10 +6,6 @@ const roomSchema = new Schema({
         type: String,
         required : true
     },
-    price: {
-        type: Number,
-        required : true,
-    },
     maxPeorle:{
         type:Number,
         required:true

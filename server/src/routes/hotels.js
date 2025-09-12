@@ -1,5 +1,5 @@
 import express from 'express';
-import { createHotel, updateHotel, deleteHotel, hotels, hotel, CountByCity, CountByType ,searchHotelsByLocation , GetHotelRoomId} from '../controllers/hotel.controller.js';
+import { createHotel, updateHotel, deleteHotel, hotels, hotel, CountByCity, CountByType ,searchHotelsByLocation , GetHotelRoomId ,updateSpecialPrices} from '../controllers/hotel.controller.js';
 import { verifyAdmin } from '../middlewares/verifyToken.js';
 
 const routes = express.Router();
@@ -21,6 +21,8 @@ routes.get('/countByCity', CountByCity);
 routes.get('/countByType', CountByType);
 
 routes.get('/room/:id', GetHotelRoomId);
+
+routes.put('/updateSpecialPrices' , verifyAdmin , updateSpecialPrices)
 
 
 export default routes;
